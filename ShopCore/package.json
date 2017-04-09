@@ -1,0 +1,25 @@
+{
+  "name": "shop-core",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "description": "ShopCore",
+  "author": {
+    "name": "quckl"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "debug": "^2.2.0",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "pug": "^2.0.0-beta6",
+    "typings": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
