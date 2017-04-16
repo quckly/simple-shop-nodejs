@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var less = require('gulp-less');
 var typescript = require('typescript');
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -11,13 +12,14 @@ var express = require('gulp-express');
 var serverOptions = {
 	root: 'public',
 	port: 8000,
-	livereload: true,
+	livereload: true
 };
 
 var tasks = {
 	'default': 'default',
 	cleanAll : 'Clean-All',
-	typeScript: 'TypeScript-Compile',
+    typeScript: 'TypeScript-Compile',
+    less: 'Compile less',
 	html: 'Copy-HTML',
 	copy: 'Copy-Compiled-JS',
 	cleanSrc: 'Clean-Source',
@@ -31,7 +33,8 @@ var tasks = {
 // Main task 
 gulp.task(tasks.default, function () {
 	runSequence(tasks.cleanAll,
-		tasks.typeScript,
+        tasks.typeScript,
+        tasks.less,
 		tasks.html,
 		tasks.copy,
 		tasks.cleanSrc,
@@ -45,7 +48,8 @@ gulp.task(tasks.default, function () {
 gulp.task(tasks.watcherRebuild, function (callback) {
 	runSequence(
 		tasks.cleanPublic, 
-		tasks.typeScript,
+        tasks.typeScript,
+        tasks.less,
 		tasks.html,
 		tasks.copy,
 		tasks.cleanSrc);
@@ -63,6 +67,12 @@ gulp.task(tasks.typeScript, function () {
         .pipe(ts(tsProject))
 		.pipe(sourcemaps.write('../maps', { includeContent: false, sourceRoot: '/scripts/src' }))
         .pipe(gulp.dest('scripts/build'));
+});
+
+gulp.task(tasks.less, function () {
+    return gulp.src('./public/style/*.less')
+        .pipe(less())
+        .pipe(gulp.dest('./public/style'));
 });
 
 // copy *.html files (templates of components)

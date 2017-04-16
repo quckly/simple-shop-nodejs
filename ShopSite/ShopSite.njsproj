@@ -20,6 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="package.json" />
+    <Content Include="public\style\style.less" />
     <Content Include="tsconfig.json" />
     <Content Include="tsd.json" />
     <Content Include="article.md" />
@@ -30,6 +31,7 @@
     <Compile Include="public\es6-module-loader@0.16.6.js" />
     <Compile Include="public\system.js" />
     <Compile Include="public\traceur-runtime.js" />
+    <TypeScriptCompile Include="scripts\src\angular2.temp.d.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <Compile Include="public\dist\angular2.js" />
     <Compile Include="public\scripts\build\bootstrap.js" />
@@ -68,6 +70,7 @@
   <ItemGroup>
     <Folder Include="public" />
     <Folder Include="public\dist" />
+    <Folder Include="public\style\" />
     <Folder Include="public\scripts" />
     <Folder Include="public\scripts\build" />
     <Folder Include="public\scripts\build\components" />

@@ -6,18 +6,18 @@ export class ProductsService {
     constructor( @Inject(Http) private http: Http) {
 	}
 
-    getAchievementsOfType(type: string): any {
-		var path = '/api/achievements/' + type;
+    getProduct(id: string): any {
+		var path = '/products/' + id;
 		return this.http.get(path);
 	}
 
-	getAllAchievements() : any {
-		var path = '/api/achievements';
+    getAllProducts() : any {
+        var path = '/products/';
 		return this.http.get(path);
 	}
 
-	addAnAchievement(newAchievement) {
-		var path = '/api/achievements';
-		return this.http.post(path, JSON.stringify(newAchievement));
+	addProduct(product) {
+        var path = '/products/';
+        return this.http.post(path, JSON.stringify(product));
 	}
 }
