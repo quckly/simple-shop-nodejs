@@ -39,7 +39,7 @@ gulp.task(tasks.default, function () {
 		tasks.copy,
 		tasks.cleanSrc,
 		tasks.startWebServer,
-		tasks.openBrowser,
+		//tasks.openBrowser,
 		tasks.watch);
 });
 
@@ -85,7 +85,7 @@ gulp.task(tasks.html, function () {
 // copy generated/compiled files 
 // from scripts/ directory to public/scripts directory
 gulp.task(tasks.copy, function () {
-	return gulp.src(['scripts/**/*.*'], { base: "." })
+	return gulp.src(['scripts/build/**/*.*'], { base: "." })
 		.pipe(gulp.dest('public'))
 		.pipe(connect.reload());
 });

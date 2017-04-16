@@ -14,7 +14,17 @@ export class ProductsService {
     getAllProducts() : any {
         var path = '/products/';
 		return this.http.get(path);
-	}
+    }
+
+    getNewProducts(): any {
+        var path = '/products/new';
+        return this.http.get(path);
+    }
+
+    getTopProducts(): any {
+        var path = '/products/top';
+        return this.http.get(path);
+    }
 
 	addProduct(product) {
         var path = '/products/';

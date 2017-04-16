@@ -40,14 +40,12 @@
     <TypeScriptCompile Include="public\scripts\src\bootstrap.ts" />
     <TypeScriptCompile Include="public\scripts\src\settings.ts" />
     <Compile Include="public\scripts\build\services\achievementsService.js" />
-    <Content Include="public\scripts\build\components\add\add.html" />
     <Compile Include="public\scripts\build\components\add\add.js" />
     <Content Include="public\scripts\build\components\app\app.html" />
     <Compile Include="public\scripts\build\components\app\app.js" />
     <Content Include="public\scripts\build\components\home\home.html" />
     <Compile Include="public\scripts\build\components\home\home.js" />
     <TypeScriptCompile Include="public\scripts\src\services\achievementsService.ts" />
-    <Content Include="public\scripts\src\components\add\add.html" />
     <TypeScriptCompile Include="public\scripts\src\components\add\add.ts" />
     <Content Include="public\scripts\src\components\app\app.html" />
     <TypeScriptCompile Include="public\scripts\src\components\app\app.ts" />
@@ -57,7 +55,6 @@
     <TypeScriptCompile Include="scripts\src\settings.ts" />
     <TypeScriptCompile Include="scripts\src\services\productsService.ts" />
     <Content Include="scripts\src\components\add\add.html" />
-    <TypeScriptCompile Include="scripts\src\components\add\add.ts" />
     <Content Include="scripts\src\components\app\app.html" />
     <TypeScriptCompile Include="scripts\src\components\app\app.ts" />
     <Content Include="scripts\src\components\home\home.html" />
@@ -71,10 +68,6 @@
     <Folder Include="public" />
     <Folder Include="public\dist" />
     <Folder Include="public\style\" />
-    <Folder Include="public\scripts" />
-    <Folder Include="public\scripts\build" />
-    <Folder Include="public\scripts\build\components" />
-    <Folder Include="public\scripts\build\components\add" />
     <Folder Include="public\scripts\build\components\app" />
     <Folder Include="public\scripts\build\components\home" />
     <Folder Include="public\scripts\build\services" />
@@ -84,9 +77,6 @@
     <Folder Include="public\scripts\maps\components\app" />
     <Folder Include="public\scripts\maps\components\home" />
     <Folder Include="public\scripts\maps\services" />
-    <Folder Include="public\scripts\src" />
-    <Folder Include="public\scripts\src\components" />
-    <Folder Include="public\scripts\src\components\add" />
     <Folder Include="public\scripts\src\components\app" />
     <Folder Include="public\scripts\src\components\home" />
     <Folder Include="public\scripts\src\services" />
