@@ -9,6 +9,16 @@ let exportRoute = (db) => {
             res.json(items);
         });
     }));
+    router.get('/new', ((req, res) => {
+        categories.find().toArray((err, items) => {
+            res.json(items);
+        });
+    }));
+    router.get('/top', ((req, res) => {
+        categories.find().toArray((err, items) => {
+            res.json(items);
+        });
+    }));
     router.get('/:id', ((req, res) => {
         if (!mongodb_1.ObjectID.isValid(req.params.id)) {
             res.json({ error: "Not valid id" });

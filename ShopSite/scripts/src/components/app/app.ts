@@ -3,7 +3,8 @@ import {Router, RouteConfig, RouterLink, RouterOutlet} from 'angular2/router';
 import {Inject} from 'angular2/di';
 
 import { _settings } from '../../settings';
-import {Home} from '../home/home';
+import { Home } from '../home/home';
+import { ProductComponent } from '../product/product';
 
 @Component({
   selector: 'my-app'
@@ -15,8 +16,8 @@ import {Home} from '../home/home';
 export class MyApp {
   constructor(@Inject(Router) router: Router) {
     router.config([
-      { path: '', as: 'home', component: Home }//,
-      //{ path: '/add', as: 'add', component: Add }
+      { path: '', as: 'home', component: Home },
+      { path: '/product/:id', as: 'product', component: ProductComponent }
     ]);
   }
 }

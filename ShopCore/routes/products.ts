@@ -11,6 +11,18 @@ let exportRoute = (db) => {
         });
     }));
 
+    router.get('/new', ((req: Request, res: Response) => {
+        categories.find().toArray((err, items) => {
+            res.json(items);
+        });
+    }));
+
+    router.get('/top', ((req: Request, res: Response) => {
+        categories.find().toArray((err, items) => {
+            res.json(items);
+        });
+    }));
+
     router.get('/:id', ((req: Request, res: Response) => {
         if (!ObjectID.isValid(req.params.id)) {
             res.json({ error: "Not valid id" });

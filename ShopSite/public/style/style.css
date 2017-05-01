@@ -1,5 +1,9 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
+/* Custom */
+.product-item {
+  text-decoration: none;
+}
 /* Padding below the footer and lighter body text */
 body {
   padding-top: 3rem;

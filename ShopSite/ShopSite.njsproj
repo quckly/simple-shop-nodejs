@@ -21,6 +21,7 @@
   <ItemGroup>
     <Content Include="package.json" />
     <Content Include="public\style\style.less" />
+    <Content Include="scripts\src\components\product\product.html" />
     <Content Include="tsconfig.json" />
     <Content Include="tsd.json" />
     <Content Include="article.md" />
@@ -32,6 +33,10 @@
     <Compile Include="public\system.js" />
     <Compile Include="public\traceur-runtime.js" />
     <TypeScriptCompile Include="scripts\src\angular2.temp.d.ts" />
+    <TypeScriptCompile Include="scripts\src\components\product\product.ts" />
+    <TypeScriptCompile Include="scripts\src\services\basketService.ts" />
+    <TypeScriptCompile Include="scripts\src\services\categoriesService.ts" />
+    <TypeScriptCompile Include="scripts\src\services\usersService.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <Compile Include="public\dist\angular2.js" />
     <Compile Include="public\scripts\build\bootstrap.js" />
@@ -67,6 +72,13 @@
   <ItemGroup>
     <Folder Include="public" />
     <Folder Include="public\dist" />
+    <Folder Include="public\scripts\" />
+    <Folder Include="public\scripts\build\" />
+    <Folder Include="public\scripts\build\components\" />
+    <Folder Include="public\scripts\build\components\add\" />
+    <Folder Include="public\scripts\src\" />
+    <Folder Include="public\scripts\src\components\" />
+    <Folder Include="public\scripts\src\components\add\" />
     <Folder Include="public\style\" />
     <Folder Include="public\scripts\build\components\app" />
     <Folder Include="public\scripts\build\components\home" />
@@ -86,6 +98,7 @@
     <Folder Include="scripts\src\components\add" />
     <Folder Include="scripts\src\components\app" />
     <Folder Include="scripts\src\components\home" />
+    <Folder Include="scripts\src\components\product\" />
     <Folder Include="scripts\src\services" />
     <Folder Include="ShopSite" />
     <Folder Include="typings" />
