@@ -3,7 +3,6 @@
   "globalDependencies": {
     "es6-promise": "github:DefinitelyTyped/DefinitelyTyped/es6-promise/es6-promise.d.ts#6f04d25ad38982d372cc3cda62fa4c0eef9e24d7",
     "rx": "github:DefinitelyTyped/DefinitelyTyped/rx/rx.d.ts#6f04d25ad38982d372cc3cda62fa4c0eef9e24d7",
-    "rx-lite": "github:DefinitelyTyped/DefinitelyTyped/rx/rx-lite.d.ts#6f04d25ad38982d372cc3cda62fa4c0eef9e24d7",
-    "angular2": "github:DefinitelyTyped/DefinitelyTyped/angular2/angular2.d.ts#6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
+    "rx-lite": "github:DefinitelyTyped/DefinitelyTyped/rx/rx-lite.d.ts#6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
   }
 }

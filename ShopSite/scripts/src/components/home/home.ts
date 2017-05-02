@@ -1,4 +1,5 @@
-import { Component, View, NgFor } from 'angular2/angular2';
+import { Component  } from '@angular/core';
+import { NgFor } from '@angular/common'
 import { _settings } from '../../settings'
 import { ProductsService } from "../../services/productsService";
 import { CategoriesService } from "../../services/categoriesService";
@@ -6,9 +7,7 @@ import { Inject } from 'angular2/di';
 
 @Component({
     selector: 'home',
-    injectables: [ProductsService]
-})
-@View({
+    injectables: [ProductsService],
     templateUrl: _settings.buildPath + "/components/home/home.html",
     directives: [NgFor]
 })
