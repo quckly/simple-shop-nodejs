@@ -1,0 +1,21 @@
+
+  <div class="row content-row">
+    <div class="col">
+      <h3>Новинки</h3>
+      <div class="newsCarousel">
+          <div class="slide product-item" *ngFor="let product of newProducts">
+            <a routerLink="/product/{{product._id}}">
+              <div class="justify-content-center">
+                <img class="product-photo" src="{{product.photo}}">
+              </div>
+              <div class="justify-content-center">
+                <span>{{product.name}}</span>
+              </div>
+              <div class="justify-content-center">
+                <span>{{product.price}} руб.</span>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>

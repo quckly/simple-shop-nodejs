@@ -1,42 +1,69 @@
 ﻿import { Router, Request, Response, NextFunction } from 'express';
 import { Collection, ObjectID } from 'mongodb';
+import { QRequest } from '../model/QRequest';
 const router = Router();
 
+let getMongoSortFromStr = (order: string) => {
+    if (/^desc/.test(order.toLowerCase())) {
+        return -1;
+    }
+
+    return 1;
+}
+
 let exportRoute = (db) => {
-    let categories: Collection = db.collection('categories');
+    let products: Collection = db.collection('products');
 
-    router.get('/', ((req: Request, res: Response) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
-        });
-    }));
+    router.get('/', ((req: QRequest, res: Response) => {
+        let priceOrder: string = null;
+        let dbQuery: any = new Object();
 
-    router.get('/new', ((req: Request, res: Response) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
-        });
-    }));
+        if (req.query.cat != undefined) {
+            dbQuery.cat = +req.query.cat;
+        }
+        
+        let cursor = products.find(dbQuery);
 
-    router.get('/top', ((req: Request, res: Response) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
-        });
-    }));
-
-    router.get('/:id', ((req: Request, res: Response) => {
-        if (!ObjectID.isValid(req.params.id)) {
-            res.json({ error: "Not valid id" });
-            return;
+        if (req.query.priceOrder != undefined) {
+            cursor.sort({ price: getMongoSortFromStr(req.query.priceOrder) });
         }
 
-        categories.findOne({ _id: new ObjectID(req.params.id) },
+        cursor.toArray((err, items) => {
+            res.json({ result: items });
+        });
+    }));
+
+    router.get('/new', ((req: QRequest, res: Response) => {
+        products.find().toArray((err, items) => {
+            res.json({ result: items });
+        });
+    }));
+
+    router.get('/top', ((req: QRequest, res: Response) => {
+        products.find().toArray((err, items) => {
+            res.json({ result: items });
+        });
+    }));
+
+    router.get('/:id', ((req: QRequest, res: Response) => {
+        //if (!ObjectID.isValid(req.params.id)) {
+        //    res.json({ error: "Not valid id" });
+        //    return;
+        //}
+
+        products.findOne({ _id: req.params.id },
             (err, result) => {
                 res.json({ error: err, result: result });
             });
     }));
 
-    router.post('/', ((req: Request, res: Response) => {
-        categories.insertOne(req.body,
+    router.post('/', ((req: QRequest, res: Response) => {
+        if (req.session.user == undefined || req.session.user.role !== "Admin") {
+            res.json({ error: "Only admin." });
+            return;
+        }
+
+        products.insertOne(req.body,
             (err, result) => {
                 res.json({ error: err, id: result.insertedId });
             });

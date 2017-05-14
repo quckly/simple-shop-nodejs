@@ -1,0 +1,12 @@
+db.products.remove({})
+db.products.insert({ "_id": 1, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 1, "name": "Cisco 1941-SEC/K9", "price": 80960, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/CISCO1941-SEC_K9_%28new%29_big.jpg" });
+db.products.insert({ "_id": 2, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 1, "name": "Cisco 2951", "price": 67890, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/CISCO2951_K9_big.jpg" });
+db.products.insert({ "_id": 3, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 2, "name": "Cisco Nexus N5K-C5596UP-FA", "price": 391820, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/N5K-C5596UP-FA_big.jpg" });
+db.products.insert({ "_id": 4, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 2, "name": "Cisco Catalyst WS-C2960G-48TC-L", "price": 26560, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/WS-C2960G-48TC-L_big.jpg" });
+db.products.insert({ "_id": 5, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 3, "name": "Cisco ASA5512-X", "price": 196000, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/ASA5512-IPS-K8_%28new%29_big.jpg" });
+db.products.insert({ "_id": 6, "date": new Date(), "description": "Buy today! The best model ever!", "cat": 3, "name": "Cisco ASA5505", "price": 14000, "photo": "https://shop.nag.ru/uploads/catalog_item_image_main/ASA5505-K8_big.jpg" });
+
+db.categories.remove({})
+db.categories.insert({ "_id": 1, "name": "Routers", "photo": "http://what-when-how.com/wp-content/uploads/2012/03/tmp915.jpg" });
+db.categories.insert({ "_id": 2, "name": "Switches", "photo": "http://webuyciscorouters.com/wp-content/uploads/2014/04/new-cisco-switch.jpg" });
+db.categories.insert({ "_id": 3, "name": "Firewalls", "photo": "https://www.speaknetworks.com/wp-content/uploads/2016/02/Cisco-ASA-5500-series.jpg" });

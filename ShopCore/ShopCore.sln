@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ShopCore", "ShopCore.njsproj", "{63A2CA72-F06A-49AF-B88A-504FB8A0A223}"
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ShopSite", "..\ShopSite\ShopSite.njsproj", "{930F0E64-5D71-4C6D-9DA9-333D7E9D5484}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ShopFront", "..\ShopFront\ShopFront.njsproj", "{1446291D-B0AD-4D02-A661-783ED270BBE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{930F0E64-5D71-4C6D-9DA9-333D7E9D5484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{930F0E64-5D71-4C6D-9DA9-333D7E9D5484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{930F0E64-5D71-4C6D-9DA9-333D7E9D5484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1446291D-B0AD-4D02-A661-783ED270BBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1446291D-B0AD-4D02-A661-783ED270BBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1446291D-B0AD-4D02-A661-783ED270BBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1446291D-B0AD-4D02-A661-783ED270BBE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

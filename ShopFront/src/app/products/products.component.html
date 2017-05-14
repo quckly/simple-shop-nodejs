@@ -1,0 +1,47 @@
+﻿<div class="container marketing">
+  <div class="row content-row">
+    <div class="col-xl-2">
+      <div class="row">
+        <span>Категории</span>
+      </div><!-- /.row -->
+    </div>
+
+    <div class="col-xl-10">
+      <h3>Товары:</h3>
+
+      <div class="row">
+        <div *ngFor="let product of currentProducts" class="col-md-3 col-sm-3 col-lg-3 product-item">
+          <a routerLink="/product/{{product._id}}">
+            <div class="row justify-content-center">
+              <img class="product-photo rounded-circle" src="{{product.photo}}" width="140" height="140">
+            </div>
+            <div class="row justify-content-center">
+              <span>{{product.name}}</span>
+            </div>
+            <div class="row justify-content-center">
+              <span>{{product.price | currency:'RUR':true:'4.2-2'}} руб.</span>
+            </div>
+          </a>
+        </div>
+      </div><!-- /.row -->
+    </div>
+  </div>
+
+  <div class="row content-row">
+    <div class="col">
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+          <a href="#">Наверх</a>
+        </p>
+        <p>
+          &copy; 2017 лучший магазин. &middot; <a href="#">Политика обработки ПДн</a> &middot; <a href="#">Правила</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+</div><!-- /.container -->

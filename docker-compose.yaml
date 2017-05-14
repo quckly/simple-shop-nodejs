@@ -1,0 +1,14 @@
+version: '2'
+services:
+    mongodb:
+      image: mongo:3.0.14
+      volumes:
+        - /var/shop-mongo:/data/db
+      ports:
+        - "27017:27017"
+    redis:
+      image: redis:3.0.7
+      volumes:
+        - /var/shop-redis:/data
+      ports:
+        - "6379:6379"

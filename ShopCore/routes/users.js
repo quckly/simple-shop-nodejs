@@ -1,6 +1,5 @@
 "use strict";
 const express_1 = require("express");
-const mongodb_1 = require("mongodb");
 class UsersRouter {
     constructor(_db) {
         this.users = _db.collection('users');
@@ -15,10 +14,10 @@ class UsersRouter {
     init() {
         this.router.get('/', this.getAll);
         this.router.get('/:id', ((req, res) => {
-            if (!mongodb_1.ObjectID.isValid(req.params.id)) {
-                return res.json({ error: "Not valid id" });
-            }
-            this.users.findOne({ _id: new mongodb_1.ObjectID(req.params.id) }, (err, result) => {
+            //if (!ObjectID.isValid(req.params.id)) {
+            //    return res.json({ error: "Not valid id" });
+            //}
+            this.users.findOne({ _id: req.params.id }, (err, result) => {
                 res.json({ error: err, result: result });
             });
         }));

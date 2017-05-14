@@ -1,5 +1,6 @@
-﻿import { Router, Request, Response, NextFunction } from 'express';
+﻿import { Router, Response, NextFunction } from 'express';
 import { Collection, ObjectID } from 'mongodb';
+import { QRequest } from '../model/QRequest';
 
 export class UsersRouter {
     router: Router;
@@ -12,7 +13,7 @@ export class UsersRouter {
         this.init();
     }
     
-    public getAll(req: Request, res: Response) {
+    public getAll(req: QRequest, res: Response) {
         this.users.find().toArray((err, items) => {
             res.json(items);
         });
@@ -21,18 +22,18 @@ export class UsersRouter {
     init() {
         this.router.get('/', this.getAll);
 
-        this.router.get('/:id', ((req: Request, res: Response) => {
-            if (!ObjectID.isValid(req.params.id)) {
-                return res.json({ error: "Not valid id" });
-            }
+        this.router.get('/:id', ((req: QRequest, res: Response) => {
+            //if (!ObjectID.isValid(req.params.id)) {
+            //    return res.json({ error: "Not valid id" });
+            //}
 
-            this.users.findOne({ _id: new ObjectID(req.params.id) },
+            this.users.findOne({ _id: req.params.id },
                 (err, result) => {
                     res.json({ error: err, result: result });
                 });
         }));
 
-        this.router.post('/', ((req: Request, res: Response) => {
+        this.router.post('/', ((req: QRequest, res: Response) => {
             this.users.insertOne(req.body,
                 (err, result) => {
                     res.json({ error: err, id: result.insertedId });

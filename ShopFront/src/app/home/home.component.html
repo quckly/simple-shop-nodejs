@@ -1,0 +1,111 @@
+﻿<div id="myCarousel" class="carousel slide myCarousel" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item" [class.active]="product.active" *ngFor="let product of topProducts">
+      <img class="slide-image" src="{{product.photo}}">
+      <div class="container">
+        <div class="carousel-caption d-none d-md-block text-left">
+          <img src="{{product.photo}}">
+          <h1>{{product.name}}</h1>
+          <p>{{product.description}}</p>
+          <p><a class="btn btn-lg btn-primary" routerLink="/product/{{product._id}}" role="button">Подробнее</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Назад</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Вперед</span>
+  </a>
+</div>
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+<div class="container marketing">
+  <div class="row content-row">
+    <div class="col">
+      <h3>Новинки</h3>
+      <div id="multipleCarousel" class="carousel slide" data-ride="carousel" data-type="multi">
+        <div class="row">
+          <a class="carousel-control-prev" href="#multipleCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item col-3 product-item" [class.active]="product.active" *ngFor="let product of newProducts">
+              <a routerLink="/product/{{product._id}}">
+                <div class="row justify-content-center">
+                  <img class="product-photo" src="{{product.photo}}">
+                </div>
+                <div class="row justify-content-center">
+                  <span>{{product.name}}</span>
+                </div>
+                <div class="row justify-content-center">
+                  <span>{{product.price}} руб.</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <a class="carousel-control-next" href="#multipleCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row content-row">
+    <div class="col">
+      <h3>Каталог</h3>
+      <div class="row">
+        <div *ngFor="let category of topCategories" class="col-md-4 col-sm-4 col-lg-4">
+          <a [routerLink]="['products']" [queryParams]="{cat: category._id}">
+            <div class="row justify-content-center">
+              <img class="category-photo" src="{{category.photo}}">
+            </div>
+            <div class="row justify-content-center">
+              <span>{{category.name}}</span>
+            </div>
+          </a>
+        </div>
+      </div><!-- /.row -->
+    </div>
+  </div>
+  <div class="row content-row">
+    <div class="col">
+      <hr class="featurette-divider">
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+          <a href="#">Наверх</a>
+        </p>
+        <p>
+          &copy; 2017 лучший магазин. &middot; <a href="#">Политика обработки ПДн</a> &middot; <a href="#">Правила</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+</div><!-- /.container -->
+<script>
+  $(document).ready(function () {
+    alert('sdfsdf');
+
+    $('.newsCarousel').bxSlider({
+      slideWidth: 300,
+      minSlides: 2,
+      maxSlides: 3,
+      moveSlides: 1,
+      slideMargin: 10
+    });
+  });
+</script>

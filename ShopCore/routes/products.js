@@ -1,35 +1,53 @@
 "use strict";
 const express_1 = require("express");
-const mongodb_1 = require("mongodb");
 const router = express_1.Router();
+let getMongoSortFromStr = (order) => {
+    if (/^desc/.test(order.toLowerCase())) {
+        return -1;
+    }
+    return 1;
+};
 let exportRoute = (db) => {
-    let categories = db.collection('categories');
+    let products = db.collection('products');
     router.get('/', ((req, res) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
+        let priceOrder = null;
+        let dbQuery = new Object();
+        if (req.query.cat != undefined) {
+            dbQuery.cat = +req.query.cat;
+        }
+        let cursor = products.find(dbQuery);
+        if (req.query.priceOrder != undefined) {
+            cursor.sort({ price: getMongoSortFromStr(req.query.priceOrder) });
+        }
+        cursor.toArray((err, items) => {
+            res.json({ result: items });
         });
     }));
     router.get('/new', ((req, res) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
+        products.find().toArray((err, items) => {
+            res.json({ result: items });
         });
     }));
     router.get('/top', ((req, res) => {
-        categories.find().toArray((err, items) => {
-            res.json(items);
+        products.find().toArray((err, items) => {
+            res.json({ result: items });
         });
     }));
     router.get('/:id', ((req, res) => {
-        if (!mongodb_1.ObjectID.isValid(req.params.id)) {
-            res.json({ error: "Not valid id" });
-            return;
-        }
-        categories.findOne({ _id: new mongodb_1.ObjectID(req.params.id) }, (err, result) => {
+        //if (!ObjectID.isValid(req.params.id)) {
+        //    res.json({ error: "Not valid id" });
+        //    return;
+        //}
+        products.findOne({ _id: req.params.id }, (err, result) => {
             res.json({ error: err, result: result });
         });
     }));
     router.post('/', ((req, res) => {
-        categories.insertOne(req.body, (err, result) => {
+        if (req.session.user == undefined || req.session.user.role !== "Admin") {
+            res.json({ error: "Only admin." });
+            return;
+        }
+        products.insertOne(req.body, (err, result) => {
             res.json({ error: err, id: result.insertedId });
         });
     }));

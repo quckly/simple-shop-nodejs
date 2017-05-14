@@ -7,17 +7,17 @@ let exportRoute = (db) => {
 
     router.get('/', ((req: Request, res: Response) => {
         categories.find().toArray((err, items) => {
-            res.json(items);
+            res.json({ result: items });
         });
     }));
 
     router.get('/:id', ((req: Request, res: Response) => {
-        if (!ObjectID.isValid(req.params.id)) {
-            res.json({ error: "Not valid id" });
-            return;
-        }
+        //if (!ObjectID.isValid(req.params.id)) {
+        //    res.json({ error: "Not valid id" });
+        //    return;
+        //}
 
-        categories.findOne({ _id: new ObjectID(req.params.id) },
+        categories.findOne({ _id: req.params.id },
             (err, result) => {
                 res.json({ error: err, result: result });
             });
