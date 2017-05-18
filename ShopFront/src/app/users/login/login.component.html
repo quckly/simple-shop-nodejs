@@ -1,12 +1,32 @@
-﻿<div class="container">
+﻿<div class="container marketing">
+  <div class="row content-row">
+    <div class="col-4 mx-auto">
+      <form class="form-signin" #loginForm="ngForm">
+        <h2 class="form-signin-heading">Please sign in:</h2>
+        <label for="login" class="sr-only">Login</label>
+        <input [(ngModel)]="model.login" name="login" type="text" id="login" class="form-control" placeholder="Login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input [(ngModel)]="model.password" name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+        <button (click)="login()" [disabled]="!loginForm.form.valid" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
 
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="login" class="sr-only">Login</label>
-    <input name="password" type="text" id="login" class="form-control" placeholder="Login" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-  </form>
+  <div class="row content-row">
+    <div class="col">
+      <hr class="featurette-divider">
 
-</div> <!-- /container -->
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+          <a href="#">Наверх</a>
+        </p>
+        <p>
+          &copy; 2017 лучший магазин. &middot; <a href="#">Политика обработки ПДн</a> &middot; <a href="#">Правила</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+</div>

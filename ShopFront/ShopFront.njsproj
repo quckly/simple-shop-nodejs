@@ -32,6 +32,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\profile-embedded\profile-embedded.component.ts" />
     <TypeScriptCompile Include="src\app\services\categories.service.ts" />
+    <TypeScriptCompile Include="src\app\services\login.service.ts" />
     <TypeScriptCompile Include="src\app\services\products.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

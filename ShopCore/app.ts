@@ -40,6 +40,7 @@ try {
 
         app.use((req, res, next) => {
             res.header("Access-Control-Allow-Origin", req.headers['Origin'] || "http://localhost:4200");
+            res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             res.header("Access-Control-Allow-Credentials", "true");
             res.header("Vary", "Origin");
@@ -66,18 +67,30 @@ try {
                 let token: string = req.cookies['token'];
                 let redis: RedisClient = req.services['redis'];
 
-                redis.get('session_' + token, (err, res) => {
-                    if (err) {
+                redis.get('session_' + token, (err, resSession) => {
+                    if (err || resSession == null) {
                         generateNewToken();
+                        return next();
                     } else {
-                        req.session = JSON.parse(res);
-                    }
+                        req.session = JSON.parse(resSession);
 
-                    next();
+                        // Lookup user
+                        if (req.session.user) {
+                            _db.collection('users').findOne({ login: String(req.session.user.login) }).then(user => {
+                                req.session.user = user;
+
+                                return next();
+                            }, err => {
+                                return res.status(400).json({ error: err })
+                            });
+                        } else {
+                            return next();
+                        }
+                    }
                 });
             } else {
                 generateNewToken();
-                next();
+                return next();
             }
         });
 

@@ -1,3 +1,32 @@
-<p>
-  register works!
-</p>
+﻿<div class="container marketing">
+  <div class="row content-row">
+    <div class="col-4 mx-auto">
+      <form class="form-signin" #registerForm="ngForm">
+        <h2 class="form-signin-heading">Please fill this fields:</h2>
+        <label for="login" class="sr-only">Login</label>
+        <input [(ngModel)]="model.login" name="login" type="text" id="login" class="form-control" placeholder="Login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input [(ngModel)]="model.password" name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+        <button (click)="register()" [disabled]="!registerForm.form.valid" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row content-row">
+    <div class="col">
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+          <a href="#">Наверх</a>
+        </p>
+        <p>
+          &copy; 2017 лучший магазин. &middot; <a href="#">Политика обработки ПДн</a> &middot; <a href="#">Правила</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+</div>

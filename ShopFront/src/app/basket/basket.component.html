@@ -1,3 +1,47 @@
-<p>
-  basket works!
-</p>
+﻿<div class="container marketing">
+  <div class="row content-row">
+    <div class="col-10 mx-auto">
+      <h3>Корзина:</h3>
+
+      <div class="row">
+        <div class="col-12">
+          <div *ngFor="let item of basketArray">
+            <div class="row">
+              <div class="col-2"><img class="product-photo" src="{{item.product.photo}}" /></div>
+              <div class="col-4">{{item.product.name}}</div>
+              <div class="col-3"><span>{{item.product.price | number:'4.2-2'}} руб.</span></div>
+              <div class="col-1"><span>{{item.count}}</span></div>
+              <div class="col-2"><button type="button" class="btn btn-secondary btn-sm" (click)="removeItem(item)">Убрать</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <span>Сумма: {{sum | number:'4.2-2'}} руб.</span>
+        </div>
+      </div>
+
+      <button (click)="createOrder()" type="button" class="btn btn-lg" [class.btn-success]="basketLength > 0" [disabled]="basketLength == 0">Оформить заказ</button>
+    </div>
+  </div>
+
+  <div class="row content-row">
+    <div class="col">
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+          <a href="#">Наверх</a>
+        </p>
+        <p>
+          &copy; 2017 лучший магазин. &middot; <a href="#">Политика обработки ПДн</a> &middot; <a href="#">Правила</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+</div>

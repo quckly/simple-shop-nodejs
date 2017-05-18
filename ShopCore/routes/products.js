@@ -12,8 +12,12 @@ let exportRoute = (db) => {
     router.get('/', ((req, res) => {
         let priceOrder = null;
         let dbQuery = new Object();
-        if (req.query.cat != undefined) {
+        if (req.query.cat != null) {
             dbQuery.cat = +req.query.cat;
+        }
+        if (req.query.query != null) {
+            dbQuery['$or'] = [{ "name": { "$regex": req.query.query, "$options": 'i' } },
+                { "description": { "$regex": req.query.query, "$options": 'i' } }];
         }
         let cursor = products.find(dbQuery);
         if (req.query.priceOrder != undefined) {
@@ -38,8 +42,11 @@ let exportRoute = (db) => {
         //    res.json({ error: "Not valid id" });
         //    return;
         //}
-        products.findOne({ _id: req.params.id }, (err, result) => {
-            res.json({ error: err, result: result });
+        products.findOne({ _id: +req.params.id }, (err, result) => {
+            if (!result) {
+                return res.status(404).json({ error: "Not found" });
+            }
+            return res.json({ error: err, result: result });
         });
     }));
     router.post('/', ((req, res) => {

@@ -18,8 +18,13 @@ let exportRoute = (db) => {
         let priceOrder: string = null;
         let dbQuery: any = new Object();
 
-        if (req.query.cat != undefined) {
+        if (req.query.cat != null) {
             dbQuery.cat = +req.query.cat;
+        }
+
+        if (req.query.query != null) {
+            dbQuery['$or'] = [{ "name": { "$regex": req.query.query, "$options": 'i' } },
+                { "description": { "$regex": req.query.query, "$options": 'i' } }];
         }
         
         let cursor = products.find(dbQuery);
@@ -51,9 +56,13 @@ let exportRoute = (db) => {
         //    return;
         //}
 
-        products.findOne({ _id: req.params.id },
+        products.findOne({ _id: +req.params.id },
             (err, result) => {
-                res.json({ error: err, result: result });
+                if (!result) {
+                    return res.status(404).json({ error: "Not found" });
+                }
+
+                return res.json({ error: err, result: result });
             });
     }));
 

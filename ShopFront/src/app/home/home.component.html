@@ -6,7 +6,7 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item" [class.active]="product.active" *ngFor="let product of topProducts">
-      <img class="slide-image" src="{{product.photo}}">
+      <div class="slide-image"></div>
       <div class="container">
         <div class="carousel-caption d-none d-md-block text-left">
           <img src="{{product.photo}}">
@@ -50,7 +50,7 @@
                   <span>{{product.name}}</span>
                 </div>
                 <div class="row justify-content-center">
-                  <span>{{product.price}} руб.</span>
+                  <span>{{product.price | number:'4.2-2'}} руб.</span>
                 </div>
               </a>
             </div>

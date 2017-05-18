@@ -53,6 +53,7 @@
     <TypeScriptCompile Include="model\QSession.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\basket.ts" />
     <TypeScriptCompile Include="routes\products.ts" />
     <TypeScriptCompile Include="routes\categories.ts" />
     <TypeScriptCompile Include="routes\index.ts" />

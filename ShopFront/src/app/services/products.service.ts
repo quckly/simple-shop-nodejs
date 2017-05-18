@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Params } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +9,9 @@ import { Product } from '../model/product';
 
 @Injectable()
 export class ProductsService {
+
+    httpOptions = new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json' }), withCredentials: true });
+
     constructor(private http: Http) {
     }
 

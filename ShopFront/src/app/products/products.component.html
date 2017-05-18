@@ -1,19 +1,32 @@
 ﻿<div class="container marketing">
   <div class="row content-row">
-    <div class="col-xl-2">
+    <div class="col-2 hidden-xs-down">
       <div class="row">
-        <span>Категории</span>
+        <nav class="col-12 bg-faded sidebar">
+          <h4>Категории: </h4>
+
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item" *ngFor="let category of categories">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/products']" [queryParams]="{cat: category._id}" queryParamsHandling="merge">{{category.name}}</a>
+            </li>
+          </ul>
+        </nav>
       </div><!-- /.row -->
     </div>
 
     <div class="col-xl-10">
-      <h3>Товары:</h3>
+      <div class="row"><h3>Товары:</h3></div>
+      <div class="row">
+        <span>Сортировать по цене:</span>
+        <a class="sort-link" [routerLink]="['/products']" [queryParams]="{priceOrder: 'asc'}" queryParamsHandling="merge">↧</a>
+        <a class="sort-link" [routerLink]="['/products']" [queryParams]="{priceOrder: 'desc'}" queryParamsHandling="merge">↥</a>
+      </div>
 
       <div class="row">
         <div *ngFor="let product of currentProducts" class="col-md-3 col-sm-3 col-lg-3 product-item">
           <a routerLink="/product/{{product._id}}">
             <div class="row justify-content-center">
-              <img class="product-photo rounded-circle" src="{{product.photo}}" width="140" height="140">
+              <img class="product-photo" src="{{product.photo}}">
             </div>
             <div class="row justify-content-center">
               <span>{{product.name}}</span>

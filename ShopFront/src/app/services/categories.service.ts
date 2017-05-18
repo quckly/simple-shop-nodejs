@@ -15,7 +15,7 @@ export class CategoriesService {
     getCategories(): Observable<any[]> {
         let path = 'http://localhost:1337/categories';
 
-        return this.http.get(path).map(res => {
+        return this.http.get(path, { withCredentials: true }).map(res => {
             let response = res.json();
 
             if (response.error) {

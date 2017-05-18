@@ -13,9 +13,18 @@
   width: 190px;
 }
 
+.product-photo-main {
+  width: 300px;
+}
+
 div.marketing {
   background-color: white;
 }
+
+.sort-link {
+  margin-left: 10px;
+}
+
 
 /* Carousel multiple items */
 #multipleCarousel .carousel-item.active,
@@ -31,11 +40,15 @@ div.marketing {
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  color: #5a5a5a;
 }
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 /* Carousel base class */
+.myCarousel h1,
+.myCarousel p {
+  color: #5a5a5a;
+}
+
 .myCarousel .carousel {
   margin-bottom: 1rem;
 }
@@ -49,12 +62,13 @@ body {
   height: 32rem;
   background-color: #777;
 }
-.myCarousel .carousel-item > img {
+.myCarousel .slide-image {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
   height: 32rem;
+  background-color: #c1c1c1;
 }
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -102,4 +116,53 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+/* LOGIN */
+.ng-valid[required], .ng-valid.required {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

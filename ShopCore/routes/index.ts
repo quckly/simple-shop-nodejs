@@ -4,12 +4,14 @@ import users from './users';
 import categories from './categories';
 import products from './products';
 import { LoginComponent } from './login'
+import { BasketComponent } from './basket'
 
 let exportRoute = (db) => {
     const router = express.Router();
     
     router.use('/users', users(db));
     router.use('/login', new LoginComponent(db).router);
+    router.use('/basket', new BasketComponent(db).router);
     router.use('/categories', categories(db));
     router.use('/products', products(db));
 

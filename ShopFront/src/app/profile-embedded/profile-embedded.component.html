@@ -1,3 +1,7 @@
-<p>
-  profile-embedded works!
-</p>
+﻿<ng-container *ngIf="auth">
+  <a routerLink="/profile">Мой профиль</a>
+</ng-container>
+<ng-container *ngIf="!auth">
+<a routerLink="/login">Войти</a><span> / </span><a routerLink="/register">Зарегистрироваться</a>
+</ng-container>
+<a routerLink="/basket">Корзина: {{basketLength}} товаров</a>

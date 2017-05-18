@@ -11,7 +11,6 @@ class LoginComponent {
         let result = new Object();
         result.login = user.login;
         result.id = user.id;
-        result.cart = user.cart;
         result.orders = user.orders;
         return result;
     }
@@ -41,13 +40,31 @@ class LoginComponent {
     }
     postLogin(req, res) {
         if (!req.body || !req.body.login || !req.body.password) {
-            res.location('/login');
+            //res.location('/login');
             return res.status(400).json({ error: "Expect fields." });
         }
+        this.users.findOne({ login: String(req.body.login) }).then(user => {
+            let tryPassword = this.genHashPassword(req.body.password, user.salt);
+            if (user.password != tryPassword) {
+                return res.status(400).json({ error: "User not found. Or password incorrect." });
+            }
+            // Set session
+            req.session.user = user;
+            let redis = req.services['redis'];
+            redis.set('session_' + req.session.id, JSON.stringify(req.session), (err, r) => {
+                if (err) {
+                    res.json({ error: err });
+                    return;
+                }
+                res.json({ result: this.getPublicUser(user) });
+            });
+        }, error => {
+            return res.status(400).json({ error: "User not found. Or password incorrect." });
+        });
     }
     postRegister(req, res) {
         if (!req.body || !req.body.login || !req.body.password) {
-            res.location('/register');
+            //res.location('/register');
             return res.status(400).json({ error: "Expect fields." });
         }
         this.users.find({ login: String(req.body.login) }).count(true, (err, c) => {
@@ -58,7 +75,7 @@ class LoginComponent {
             user.login = req.body.login;
             user.salt = this.genRandomString(16);
             user.password = this.genHashPassword(req.body.password, user.salt);
-            user.cart = [];
+            user.basket = { items: {} };
             user.orders = [];
             this.users.insertOne(user, (err, r) => {
                 if (err) {
@@ -80,9 +97,9 @@ class LoginComponent {
         });
     }
     init() {
-        this.router.get('/profile', this.getProfile);
-        this.router.post('/', this.postLogin);
-        this.router.post('/register', this.postRegister);
+        this.router.get('/profile', (req, res) => this.getProfile(req, res));
+        this.router.post('/', (req, res) => this.postLogin(req, res));
+        this.router.post('/register', (req, res) => this.postRegister(req, res));
     }
 }
 exports.LoginComponent = LoginComponent;

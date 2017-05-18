@@ -12,9 +12,9 @@
         <a class="nav-link" href="/products" routerLink="/products">Каталог</a>
       </li>
     </ul>
-    <form class="form-inline mt-4 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Поиск по товарам">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+    <form class="form-inline mt-4 mt-md-0" #searchForm="ngForm">
+      <input [(ngModel)]="searchModel.query" name="searchQueryInput" class="form-control mr-sm-2" type="text" placeholder="Поиск по товарам">
+      <button (click)="search()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
     </form>
     <app-profile-embedded class="ml-auto justify-content-end"></app-profile-embedded>
   </div>

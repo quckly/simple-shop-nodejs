@@ -17,6 +17,7 @@ import { ProfileEmbeddedComponent } from './profile-embedded/profile-embedded.co
 import { BasketService } from './services/basket.service';
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
+import { LoginService } from './services/login.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [BasketService, ProductsService, CategoriesService],
+  providers: [BasketService, ProductsService, CategoriesService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
