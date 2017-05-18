@@ -1,6 +1,7 @@
 ﻿import { Router, Request, Response, NextFunction } from 'express';
 import { Collection, ObjectID } from 'mongodb';
 import { QRequest } from '../model/QRequest';
+import { RedisClient } from 'redis';
 const router = Router();
 
 let getMongoSortFromStr = (order: string) => {
@@ -45,8 +46,23 @@ let exportRoute = (db) => {
     }));
 
     router.get('/top', ((req: QRequest, res: Response) => {
-        products.find().toArray((err, items) => {
-            res.json({ result: items });
+        let redis: RedisClient = req.services['redis'];
+
+        redis.get('cache_top', (err, resItems) => {
+            if (err || resItems == null) {
+                products.find().toArray((err, items) => {
+                    items.forEach(v => {
+                        v.description = v.description + 'Cached: ' + new Date();
+                    });
+
+                    redis.setex('cache_top', 60, JSON.stringify(items), (err, redisRes) => {
+                        res.json({ result: items });
+                    });
+                });
+            } else {
+                let result = JSON.parse(resItems);
+                return res.json({ result: result });
+            }
         });
     }));
 

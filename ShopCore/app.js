@@ -12,6 +12,9 @@ const MongoClient = mongodb.MongoClient;
 let db;
 const app = express();
 const redisClient = redis_1.createClient();
+redisClient.on("error", function (err) {
+    console.log("Error " + err);
+});
 //const mongoDbUrl = 'mongodb://shop-lab:hDrB8cGwN3jzN4YCCFw3qSSd@ds137530.mlab.com:37530/shop-lab';
 const mongoDbUrl = 'mongodb://localhost/shopdb';
 try {
